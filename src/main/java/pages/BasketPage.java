@@ -1,5 +1,7 @@
 package pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +24,8 @@ public class BasketPage extends BasePage {
     public BasketPage(WebDriver driver) {
         super(driver);
     }
+
+    private static final Logger log = LogManager.getLogger(BasketPage.class.getName());
 
     public void hover(By locator, long wait) {
         WebElement element = getElement(locator);
@@ -67,14 +71,17 @@ public class BasketPage extends BasePage {
         for (int i = 0; i < list.size(); i++) {
             sum = sum + Double.parseDouble(list.get(i).getText());
         }
-        System.out.println("Zbir cena u korpi je: " + sum);
+        //System.out.println("Zbir cena u korpi je: " + sum);
 
         double total = Double.parseDouble(getElement(totalPrice).getText());
-        System.out.println("Total je: " + total);
+        //System.out.println("Total je: " + total);
 
         if (sum ==total){
+            log.info("Sum of product: " + sum + ", is equal to total price: " +total);
             return true;
-        } else {}
+        } else {
+            log.error("Sum of product: " + sum + ", is NOT equal to total price: " +total);
+        }
         return false;
 
     }

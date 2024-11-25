@@ -51,6 +51,6 @@ public class RegisterPage extends BasePage{
     }
 
     public boolean isUserRegistered (){
-        return matchesExpectedText(successTextRegistration, "Your registration completed");
+        return matchesExpectedText1 (successTextRegistration, "Your registration completed");
     }
 }

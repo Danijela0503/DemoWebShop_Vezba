@@ -29,7 +29,7 @@ public class LoginPage extends BasePage{
 
 
     public boolean isUserLogin (){
-        return matchesExpectedText(logoutButton, "Log out");
+        return matchesExpectedText1 (logoutButton, "Log out");
     }
 
 
